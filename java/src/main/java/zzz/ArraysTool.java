@@ -2,6 +2,7 @@ package zzz;
 
 import cn.hutool.core.util.RandomUtil;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -17,9 +18,9 @@ public class ArraysTool {
     private static final int MIN = 1;
     private static final int MAX = 100;
 
-    public static boolean equals(int[] i1,int[] i2){
+    public static boolean equals(int[] i1, int[] i2) {
         boolean flag = true;
-        if (i1.length!=i2.length) {
+        if (i1.length != i2.length) {
             return false;
         }
         for (int i = 0; i < i1.length; i++) {
@@ -29,6 +30,12 @@ public class ArraysTool {
             }
         }
         return flag;
+    }
+
+    // [6, 36, 81, 44, 12, 7, 43, 49, 2, 92, 18, 15, 28, 96, 31]
+    public static int[] generatorArray(String arrStr) {
+        String[] numStrArr = arrStr.replaceAll("[\\[|\\]|\\s]", "").split(",");
+        return Arrays.stream(numStrArr).mapToInt(Integer::valueOf).toArray();
     }
 
     public static int[] generatorArray(int length) {
